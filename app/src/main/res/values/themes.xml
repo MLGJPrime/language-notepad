@@ -1,0 +1,59 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LanguageNotepad" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+
+        <!-- Colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:colorForeground">@color/colorText</item>
+        <item name="android:colorSecondary">@color/colorSecondaryText</item>
+        <item name="android:colorAccent">#009688</item>
+        <item name="android:colorError">@color/colorError</item>
+
+        <!-- Button colors -->
+        <item name="android:colorButtonNormal">@color/colorButton</item>
+        <item name="android:colorControlHighlight">@color/colorButtonPressed</item>
+
+        <!-- Divider color -->
+        <item name="android:colorControlActivated">@color/colorDivider</item>
+
+        <!-- Link color -->
+        <item name="android:textColorLink">@color/colorLink</item>
+    </style>
+
+    <style name="Theme.LanguageNotepad" parent="Base.Theme.LanguageNotepad" />
+
+    <style name="ThemeOverlay.search" parent="Base.Theme.LanguageNotepad">
+        <!-- Text color -->
+        <item name="android:editTextColor">@color/colorText</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/colorSecondaryText</item>
+        <!-- Font Family-->
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="CircularShapeOverlay" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="TransparentDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:background">@color/colorSurface</item>
+        <item name="android:itemBackground">@color/colorSurface</item>
+        <item name="android:popupBackground">@color/colorSurface</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+</resources>

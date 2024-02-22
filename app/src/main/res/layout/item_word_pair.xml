@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:orientation="horizontal"
+    tools:ignore="Autofill">
+
+    <ImageView
+        android:id="@+id/imgSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/select_icon_description"
+        android:src="@drawable/ic_unselected"
+        android:visibility="visible" />
+
+    <!-- Original Language -->
+    <EditText
+        android:id="@+id/etWord"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="@font/manrope_regular"
+        android:hint="@string/enter_word"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:textSize="12sp"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!-- English Translation -->
+    <EditText
+        android:id="@+id/etTranslation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="@font/manrope_regular"
+        android:hint="@string/enter_translation"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/colorSecondaryText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:textSize="12sp"
+        tools:ignore="TouchTargetSizeCheck" />
+</LinearLayout>
