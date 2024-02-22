@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Back Icon -->
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/back_icon_description"
+            android:src="@drawable/ic_back" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- Class name -->
+            <TextView
+                android:id="@+id/tvClassName"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/class_word_text"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                tools:ignore="NestedWeights,TextSizeCheck" />
+
+            <!-- Class translation -->
+            <TextView
+                android:id="@+id/tvClassTranslation"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/class_translation_text"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="18sp"
+                tools:ignore="TextSizeCheck" />
+        </LinearLayout>
+
+        <!-- Done Icon -->
+        <ImageView
+            android:id="@+id/imgDone"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/done_icon_description"
+            android:src="@drawable/ic_done"
+            android:visibility="gone" />
+
+        <!-- More Options Icon -->
+        <ImageView
+            android:id="@+id/imgMore"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/more_icon_description"
+            android:src="@drawable/ic_more"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <!-- Search Bar -->
+    <include
+        android:id="@+id/searchBar"
+        layout="@layout/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+
+    <!-- Delete Bar -->
+    <include
+        android:id="@+id/deleteBar"
+        layout="@layout/delete_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/searchBar" />
+
+    <!-- RecyclerView for Instances -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPairs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deleteBar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/rvPairs">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddNewPair"
+            android:layout_width="72dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorButton"
+            android:contentDescription="@string/btn_add_pair"
+            android:visibility="visible"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_add"
+            app:iconSize="24dp"
+            app:iconTint="@color/colorButtonIcon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Language Notepad</string>
+    <string name="classes_header_text">Word Classes</string>
+    <string name="search">Search through classes</string>
+    <string name="menu_icon_description">Navigation Drawer</string>
+    <string name="search_icon_description">Search</string>
+    <string name="more_icon_description">More Options</string>
+    <string name="create_class_button_description">Create a new class</string>
+    <string name="back_icon_description">Return</string>
+    <string name="enter_word">Enter Word</string>
+    <string name="enter_translation">Enter Translation</string>
+    <string name="class_word_text">Class Name</string>
+    <string name="class_translation_text">Class Translation</string>
+    <string name="cv_pairs">Word Pairs</string>
+    <string name="done_icon_description">Done</string>
+    <string name="btn_add_pair">Add Pair</string>
+    <string name="select_icon_description">Select</string>
+    <string name="action_search">Search</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_settings">Settings</string>
+    <string name="clear_icon_description">Clear</string>
+    <string name="selected_pairs_text">Selected Pairs</string>
+    <string name="all_text">All</string>
+    <string name="delete_icon_description">Delete</string>
+    <string name="select_all_icon_description">Select All</string>
+</resources>

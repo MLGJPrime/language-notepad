@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+        <!-- RecyclerView for pairs of layouts -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPairs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:clipToPadding="false"
+            android:focusable="false"
+            android:paddingStart="4dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="8dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <!-- Class word -->
+        <TextView
+            android:id="@+id/tvClassName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/manrope_bold"
+            android:text="@string/class_word_text"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textSize="12sp"
+            tools:ignore="NestedWeights,TextSizeCheck" />
+
+        <!-- Class translation -->
+        <TextView
+            android:id="@+id/tvClassTranslation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/manrope_bold"
+            android:text="@string/class_translation_text"
+            android:textAlignment="center"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    tools:ignore="Autofill">
+
+    <!-- Enter Class Name and Class Translation in a vertically aligned LinearLayout -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Enter Class Name -->
+        <EditText
+            android:id="@+id/etClassName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/manrope_regular"
+            android:hint="@string/class_word_text"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorSecondaryText"
+            android:textSize="18sp" />
+
+        <!-- Enter Class Translation -->
+        <EditText
+            android:id="@+id/etClassTranslation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/manrope_regular"
+            android:hint="@string/class_translation_text"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColor="@color/colorSecondaryText"
+            android:textColorHint="@color/colorSecondaryText"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- Done Icon -->
+    <ImageView
+        android:id="@+id/imgDone"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_done"
+        android:contentDescription="@string/done_icon_description" />
+
+</LinearLayout>
+

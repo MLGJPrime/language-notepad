@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#0366d6</color> <!-- GitHub's primary blue color -->
+    <color name="colorPrimaryDark">#24292e</color> <!-- GitHub's dark primary color -->
+
+    <!-- Background Colors -->
+    <color name="colorBackground">#1E2328</color> <!-- GitHub's dark background color -->
+    <color name="colorSurface">#2D3237</color> <!-- GitHub's surface color -->
+
+    <!-- Text Colors -->
+    <color name="colorText">#ffffff</color> <!-- GitHub's text color -->
+    <color name="colorSecondaryText">#BEBEBE</color> <!-- GitHub's secondary text color -->
+
+    <!-- Accent Colors -->
+    <color name="colorAccent">#009688</color> <!-- GitHub's green accent color -->
+
+    <!-- Divider Colors -->
+    <color name="colorDivider">#30363d</color> <!-- GitHub's divider color -->
+
+    <!-- Button Colors -->
+    <color name="colorButton">#36444A</color> <!-- GitHub's button color -->
+    <color name="colorButtonPressed">#596E78</color> <!-- GitHub's pressed button color -->
+    <color name="colorButtonIcon">#F16235</color> <!-- button icon color -->
+
+    <!-- Other Colors -->
+    <color name="colorError">#d73a49</color> <!-- GitHub's error color -->
+    <color name="colorLink">#0366d6</color> <!-- GitHub's link color -->
+    <color name="colorCheckBackground">#2196F3
+    </color> <!-- Custom blue color for check mark background -->
+
+</resources>
