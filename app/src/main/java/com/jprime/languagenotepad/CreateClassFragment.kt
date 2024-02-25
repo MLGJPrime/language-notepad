@@ -181,6 +181,7 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
                 }
                 pairAdapter.setData(filteredPairs)
                 pairAdapter.notifyDataSetChanged()
+                binding.btnAddNewPair.visibility = View.VISIBLE
                 return true
             }
         })
@@ -194,6 +195,8 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
 
             // Show the header layout
             binding.headerLayout.visibility = View.VISIBLE
+            binding.btnAddNewPair.visibility = View.VISIBLE
+
         }
 
         binding.deleteBar.imgDelete.setOnClickListener {
@@ -208,6 +211,8 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
 
             // Show the header layout
             binding.headerLayout.visibility = View.VISIBLE
+            binding.btnAddNewPair.visibility = View.VISIBLE
+
         }
     }
 

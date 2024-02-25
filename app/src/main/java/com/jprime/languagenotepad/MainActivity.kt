@@ -23,15 +23,18 @@ class MainActivity : AppCompatActivity(), PairAdapter.OnItemListener {
         val deleteBar = findViewById<View>(R.id.deleteBar)
         val headerLayout = findViewById<View>(R.id.headerLayout)
         val searchBar = findViewById<View>(R.id.searchBar)
+        val btnAddNewPaid = findViewById<View>(R.id.btnAddNewPair)
 
         if (deleteBar.visibility == View.VISIBLE) {
             // If deleteBar is visible, hide it and show the headerLayout
             deleteBar.visibility = View.GONE
             headerLayout.visibility = View.VISIBLE
+            btnAddNewPaid.visibility = View.VISIBLE
             pairAdapter.setDeleteActionActive(false)
         } else if (searchBar.visibility == View.VISIBLE) {
             searchBar.visibility = View.GONE
             headerLayout.visibility = View.VISIBLE
+            btnAddNewPaid.visibility = View.VISIBLE
         } else {
             // If deleteBar is not visible, perform default back press behavior
             super.onBackPressed()
