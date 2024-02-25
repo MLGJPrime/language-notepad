@@ -24,6 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@SuppressLint("NotifyDataSetChanged")
 class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
 
     private val pairAdapter: PairAdapter = PairAdapter(this)
@@ -193,6 +194,37 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
 
             // Show the header layout
             binding.headerLayout.visibility = View.VISIBLE
+        }
+
+        binding.deleteBar.imgDelete.setOnClickListener {
+            // Get the list of selected items from the PairAdapter
+            val selectedItems = pairAdapter.getSelectedItems()
+
+            // Delete the selected items from the database
+            deleteSelectedItems(selectedItems)
+            pairAdapter.setDeleteActionActive(false)
+            // Hide the search bar
+            binding.deleteBar.root.visibility = View.GONE
+
+            // Show the header layout
+            binding.headerLayout.visibility = View.VISIBLE
+        }
+    }
+
+
+    private fun deleteSelectedItems(selectedItems: HashSet<Long>) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            context?.let { ctx ->
+                val wordPairDao = LanguageDatabase.getDatabase(ctx).wordPairDao()
+                withContext(Dispatchers.Main) {
+                    selectedItems.forEach { id ->
+                        wordPairDao.deleteWordPair(id)
+                    }
+
+                    pairList.removeAll { it.id in selectedItems }
+                    pairAdapter.notifyDataSetChanged()
+                }
+            }
         }
     }
 

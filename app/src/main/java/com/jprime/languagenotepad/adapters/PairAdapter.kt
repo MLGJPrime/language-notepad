@@ -138,8 +138,8 @@ class PairAdapter(private val onItemListener: OnItemListener) :
         notifyDataSetChanged() // Notify RecyclerView to refresh views
     }
 
-    fun getSelectedItems(): List<WordPair> {
-        return pairList.filter { selectedItems.contains(it.id) }
+    fun getSelectedItems(): HashSet<Long> {
+        return selectedItems
     }
 
     override fun getItemCount(): Int {
