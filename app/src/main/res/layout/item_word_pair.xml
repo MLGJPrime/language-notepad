@@ -15,7 +15,8 @@
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/select_icon_description"
         android:src="@drawable/ic_unselected"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:ignore="ImageContrastCheck" />
 
     <!-- Original Language -->
     <EditText

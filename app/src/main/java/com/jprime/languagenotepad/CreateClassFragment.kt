@@ -214,6 +214,14 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
             binding.btnAddNewPair.visibility = View.VISIBLE
 
         }
+
+        binding.deleteBar.imgSelect.setOnClickListener {
+            val isAllSelected = pairAdapter.toggleSelectAll()
+            binding.deleteBar.imgSelect.setImageResource(
+                if (isAllSelected) R.drawable.ic_unselected
+                else R.drawable.ic_selected
+            )
+        }
     }
 
 

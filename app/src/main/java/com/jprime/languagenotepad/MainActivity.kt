@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity(), PairAdapter.OnItemListener {
 
         if (deleteBar.visibility == View.VISIBLE) {
             // If deleteBar is visible, hide it and show the headerLayout
+            pairAdapter.setDeleteActionActive(false)
             deleteBar.visibility = View.GONE
             headerLayout.visibility = View.VISIBLE
             btnAddNewPaid.visibility = View.VISIBLE
-            pairAdapter.setDeleteActionActive(false)
         } else if (searchBar.visibility == View.VISIBLE) {
             searchBar.visibility = View.GONE
             headerLayout.visibility = View.VISIBLE

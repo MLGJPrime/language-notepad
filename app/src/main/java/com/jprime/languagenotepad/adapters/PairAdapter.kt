@@ -135,12 +135,23 @@ class PairAdapter(private val onItemListener: OnItemListener) :
 
     fun setDeleteActionActive(isActive: Boolean) {
         deleteActionActive = isActive
-        notifyDataSetChanged() // Notify RecyclerView to refresh views
+        notifyDataSetChanged()
     }
 
     fun getSelectedItems(): HashSet<Long> {
         return selectedItems
     }
+
+    fun toggleSelectAll(): Boolean {
+        if (selectedItems.size == pairList.size) {
+            selectedItems.clear()
+        } else {
+            selectedItems.addAll(pairList.map { it.id })
+        }
+        notifyDataSetChanged()
+        return selectedItems.isEmpty()
+    }
+
 
     override fun getItemCount(): Int {
         return pairList.size
