@@ -2,6 +2,7 @@ package com.jprime.languagenotepad
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.jprime.languagenotepad.adapters.PairAdapter
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity(), PairAdapter.OnItemListener {
         val deleteBar = findViewById<View>(R.id.deleteBar)
         val headerLayout = findViewById<View>(R.id.headerLayout)
         val searchBar = findViewById<View>(R.id.searchBar)
+        val svPairs = findViewById<SearchView>(R.id.svPairs)
         val btnAddNewPaid = findViewById<View>(R.id.btnAddNewPair)
 
         if (deleteBar.visibility == View.VISIBLE) {
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity(), PairAdapter.OnItemListener {
             headerLayout.visibility = View.VISIBLE
             btnAddNewPaid.visibility = View.VISIBLE
         } else if (searchBar.visibility == View.VISIBLE) {
+            svPairs.setQuery("", false)
             searchBar.visibility = View.GONE
             headerLayout.visibility = View.VISIBLE
             btnAddNewPaid.visibility = View.VISIBLE

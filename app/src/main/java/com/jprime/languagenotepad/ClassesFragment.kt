@@ -1,9 +1,11 @@
 package com.jprime.languagenotepad
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -73,6 +75,23 @@ class ClassesFragment : Fragment() {
                 }
             }
         }
+
+        binding.svClasses.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filteredPairs = classList.filter { item ->
+                    item.className!!.contains(newText.orEmpty(), ignoreCase = true) ||
+                            item.classTranslation!!.contains(newText.orEmpty(), ignoreCase = true)
+                }
+                classAdapter.setData(filteredPairs)
+                classAdapter.notifyDataSetChanged()
+                return true
+            }
+        })
     }
 
     private fun replaceFragment(

@@ -177,11 +177,10 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 val filteredPairs = pairList.filter { pair ->
                     pair.word.contains(newText.orEmpty(), ignoreCase = true) ||
-                            pair.translation.contains(newText.orEmpty(), ignoreCase = true)
+                    pair.translation.contains(newText.orEmpty(), ignoreCase = true)
                 }
                 pairAdapter.setData(filteredPairs)
                 pairAdapter.notifyDataSetChanged()
-                binding.btnAddNewPair.visibility = View.VISIBLE
                 return true
             }
         })
@@ -189,6 +188,9 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
         binding.searchBar.imgClear.setOnClickListener {
             // Clear focus from the search view
             binding.searchBar.svPairs.clearFocus()
+
+            // Clear the text in the search view
+            binding.searchBar.svPairs.setQuery("", false)
 
             // Hide the search bar
             binding.searchBar.root.visibility = View.GONE
