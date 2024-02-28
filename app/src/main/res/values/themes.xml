@@ -47,8 +47,6 @@
 
     <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
         <item name="android:background">@color/colorSurface</item>
-        <item name="android:itemBackground">@color/colorSurface</item>
-        <item name="android:popupBackground">@color/colorSurface</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_height">wrap_content</item>

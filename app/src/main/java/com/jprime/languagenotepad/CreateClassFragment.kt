@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jprime.languagenotepad.adapters.PairAdapter
+import com.jprime.languagenotepad.adapters.ReadPairsAdapter
 import com.jprime.languagenotepad.dao.WordClassDao
 import com.jprime.languagenotepad.database.LanguageDatabase
 import com.jprime.languagenotepad.databinding.FragmentCreateClassBinding
@@ -28,10 +29,12 @@ import kotlinx.coroutines.withContext
 class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
 
     private val pairAdapter: PairAdapter = PairAdapter(this)
+    private val readPairsAdapter: ReadPairsAdapter = ReadPairsAdapter()
     private var _binding: FragmentCreateClassBinding? = null
     private val binding get() = _binding!!
     private var pairList = ArrayList<WordPair>()
     private var focusedPosition: Int = RecyclerView.NO_POSITION
+    private var isReadOnly: Boolean = false
 
     // Access the WordClassDao directly
     private val wordClassDao: WordClassDao by lazy {
@@ -134,10 +137,24 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
             // Inflate the menu XML file
             popupMenu.menuInflater.inflate(R.menu.menu_options_create_class, popupMenu.menu)
 
+            // Update menu items based on read-only state
+            val menuItemReadOnly = popupMenu.menu.findItem(R.id.action_read_only)
+            menuItemReadOnly?.isChecked = isReadOnly
+
             // Set item click listener for the menu items
             popupMenu.setOnMenuItemClickListener { menuItem ->
                 // Handle menu item clicks
                 when (menuItem.itemId) {
+                    R.id.action_read_only -> {
+                        // Toggle read-only mode
+                        isReadOnly = !menuItem.isChecked
+                        menuItem.isChecked = isReadOnly
+
+                        // Update UI based on read-only mode
+                        updateUIForReadOnlyMode(isReadOnly)
+                        true
+                    }
+
                     R.id.action_search -> {
                         // Handle search action
                         binding.headerLayout.visibility = View.GONE
@@ -177,10 +194,15 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 val filteredPairs = pairList.filter { pair ->
                     pair.word.contains(newText.orEmpty(), ignoreCase = true) ||
-                    pair.translation.contains(newText.orEmpty(), ignoreCase = true)
+                            pair.translation.contains(newText.orEmpty(), ignoreCase = true)
                 }
-                pairAdapter.setData(filteredPairs)
-                pairAdapter.notifyDataSetChanged()
+                if (isReadOnly) {
+                    readPairsAdapter.setData(filteredPairs)
+                    readPairsAdapter.notifyDataSetChanged()
+                } else {
+                    pairAdapter.setData(filteredPairs)
+                    pairAdapter.notifyDataSetChanged()
+                }
                 return true
             }
         })
@@ -307,11 +329,6 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
         focusedPosition = position
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onEditorAction(position: Int) {
         focusedPosition = position
         val classId = arguments?.getLong(ARG_WORD_CLASS_ID, -1) ?: -1
@@ -323,5 +340,23 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         val view = this.currentFocus ?: window.decorView.rootView
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun updateUIForReadOnlyMode(isReadOnly: Boolean) {
+        // Update visibility of add new pair button
+        binding.btnAddNewPair.visibility = if (isReadOnly) View.GONE else View.VISIBLE
+
+        // Change RecyclerView adapter based on read-only mode
+        if (isReadOnly) {
+            readPairsAdapter.setData(pairList) // Assuming pairAdapter is accessible
+            binding.rvPairs.adapter = readPairsAdapter
+        } else {
+            binding.rvPairs.adapter = pairAdapter
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

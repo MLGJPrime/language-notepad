@@ -23,4 +23,5 @@
     <string name="all_text">All</string>
     <string name="delete_icon_description">Delete</string>
     <string name="select_all_icon_description">Select All</string>
+    <string name="action_read_only">Reading Mode</string>
 </resources>
