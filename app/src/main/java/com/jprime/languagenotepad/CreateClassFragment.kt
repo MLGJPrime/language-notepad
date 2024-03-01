@@ -248,7 +248,6 @@ class CreateClassFragment : Fragment(), PairAdapter.OnItemListener {
         }
     }
 
-
     private fun deleteSelectedItems(selectedItems: HashSet<Long>) {
         lifecycleScope.launch(Dispatchers.IO) {
             context?.let { ctx ->

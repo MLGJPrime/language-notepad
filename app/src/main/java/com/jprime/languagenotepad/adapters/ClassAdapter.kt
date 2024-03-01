@@ -1,9 +1,11 @@
 package com.jprime.languagenotepad.adapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -11,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jprime.languagenotepad.ClassesFragment
+import com.jprime.languagenotepad.R
 import com.jprime.languagenotepad.database.LanguageDatabase
 import com.jprime.languagenotepad.databinding.ItemClassBinding
 import com.jprime.languagenotepad.entities.WordClass
@@ -19,11 +22,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@SuppressLint("NotifyDataSetChanged")
+
 class ClassAdapter(private val classesFragment: ClassesFragment) :
     RecyclerView.Adapter<ClassAdapter.ClassViewHolder>() {
 
     private var classList = ArrayList<WordClass>()
     private var readPairList = ArrayList<WordPair>()
+    private var selectedItems = HashSet<Long>()
+    private var deleteActionActive: Boolean = false
 
     inner class ClassViewHolder(binding: ItemClassBinding) : RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
@@ -33,6 +40,7 @@ class ClassAdapter(private val classesFragment: ClassesFragment) :
         val rvPairs: RecyclerView = binding.rvPairs
         private val cardView: CardView = binding.cardView
         private val linearLayout: LinearLayout = binding.linearLayout
+        val imgSelect: ImageView = binding.imgSelect
 
         init {
             Log.d("ClassAdapter", "Init block called for position: $bindingAdapterPosition")
@@ -60,6 +68,26 @@ class ClassAdapter(private val classesFragment: ClassesFragment) :
             "ClassAdapter",
             "Binding WordClass: ${wordClass.className}, ${wordClass.classTranslation}"
         )
+
+        // Set selected state
+        holder.imgSelect.setImageResource(
+            if (selectedItems.contains(wordClass.id)) R.drawable.ic_selected
+            else R.drawable.ic_unselected
+        )
+
+        holder.imgSelect.visibility = if (deleteActionActive) View.VISIBLE else View.GONE
+
+        // Toggle selection on click
+        holder.itemView.setOnClickListener {
+            if (selectedItems.contains(wordClass.id)) {
+                selectedItems.remove(wordClass.id)
+                Log.d("PairAdapter", "Item deselected with ID: ${wordClass.id}")
+            } else {
+                selectedItems.add(wordClass.id)
+                Log.d("PairAdapter", "Item selected with ID: ${wordClass.id}")
+            }
+            notifyDataSetChanged()
+        }
 
         holder.tvClassName.text = wordClass.className
         holder.tvClassTranslation.text = wordClass.classTranslation
@@ -106,5 +134,24 @@ class ClassAdapter(private val classesFragment: ClassesFragment) :
         classList = data as ArrayList<WordClass>
 
         Log.d("ClassAdapter", "Data updated. New item count: ${data.size}")
+    }
+
+    fun setDeleteActionActive(isActive: Boolean) {
+        deleteActionActive = isActive
+        notifyDataSetChanged()
+    }
+
+    fun getSelectedItems(): HashSet<Long> {
+        return selectedItems
+    }
+
+    fun toggleSelectAll(): Boolean {
+        if (selectedItems.size == classList.size) {
+            selectedItems.clear()
+        } else {
+            selectedItems.addAll(classList.map { it.id })
+        }
+        notifyDataSetChanged()
+        return selectedItems.isEmpty()
     }
 }

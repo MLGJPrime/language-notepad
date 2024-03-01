@@ -16,6 +16,7 @@
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -55,6 +56,15 @@
             android:src="@drawable/ic_more" />
     </LinearLayout>
 
+    <!-- Delete Bar -->
+    <include
+        android:id="@+id/deleteBar"
+        layout="@layout/delete_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+
     <!-- SearchView -->
     <SearchView
         android:id="@+id/svClasses"
@@ -72,7 +82,7 @@
         android:theme="@style/ThemeOverlay.search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+        app:layout_constraintTop_toBottomOf="@id/deleteBar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvClasses"
