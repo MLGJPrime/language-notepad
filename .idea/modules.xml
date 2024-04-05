@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Language_Notepad.iml" filepath="$PROJECT_DIR$/.idea/modules/Language_Notepad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Language_Notepad.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>
