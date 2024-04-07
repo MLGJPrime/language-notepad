@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OnBoardingViewModel @Inject constructor() : ViewModel() {
-    private val selectedLanguage: MutableLiveData<Language> = MutableLiveData()
+    val selectedLanguage: MutableLiveData<Language> = MutableLiveData()
 
     fun selectLanguage(language: Language) {
         selectedLanguage.value = language

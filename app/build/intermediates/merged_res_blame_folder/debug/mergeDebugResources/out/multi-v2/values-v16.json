@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.jprime.languagenotepad.app-mergeDebugResources-42:/values-v16/values-v16.xml",
+            "outputFile": "com.jprime.languagenotepad.app-mergeDebugResources-58:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\janpr\\.gradle\\caches\\transforms-3\\4db716c8d57e9dd9a4e39e9e3d6a6063\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\janpr\\.gradle\\caches\\transforms-3\\12f9e4a3ff024db97007a804323f401c\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
