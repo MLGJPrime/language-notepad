@@ -1,8 +1,8 @@
-package com.jprime.languagenotepad.onboarding.presentation
+package com.jprime.languagenotepad.presentation.onboarding
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jprime.languagenotepad.onboarding.model.Language
+import com.jprime.languagenotepad.domain.model.Language
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

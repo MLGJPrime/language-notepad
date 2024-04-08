@@ -75,4 +75,6 @@ dependencies {
     implementation(libs.paging)
     ksp(libs.hilt.compiler.ksp)
     ksp(libs.androidx.room.ksp)
+    implementation(libs.accompanistSystemUiController)
+    implementation(libs.coreSplashscreen)
 }

@@ -9,6 +9,9 @@ color teal_700
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+font poppins_bold
+font poppins_regular
+font poppins_semibold
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

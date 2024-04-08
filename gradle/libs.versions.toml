@@ -9,11 +9,15 @@ lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2024.04.00"
 room = "2.6.1"
+#noinspection GradleDependency
 hilt = "2.45"
 ksp = "1.9.22-1.0.16"
 hiltNavigationCompose = "1.2.0"
 composeNavigation = "2.7.7"
 paging = "3.2.1"
+accompanistSystemUiController = "0.31.4-beta"
+coreSplashScreen = "1.0.1"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +42,9 @@ hilt-compiler-ksp = { group = "com.google.dagger", name = "hilt-compiler", versi
 androidx-hilt-navigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 composeNavigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
 paging = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
+accompanistSystemUiController = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanistSystemUiController" }
+coreSplashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "coreSplashScreen" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
