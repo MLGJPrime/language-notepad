@@ -10,25 +10,22 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import com.jprime.languagenotepad.R
+import com.jprime.languagenotepad.presentation.onboarding.OnBoardingViewModel
 
 @Composable
-fun LanguageTextField(
-    value: String,
-    onValueChange: (String) -> Unit,
-    label: @Composable (() -> Unit)? = null,
+fun CustomOutlinedTextField(
     modifier: Modifier = Modifier,
+    onBoardingViewModel: OnBoardingViewModel,
+    label: String,
+    supportingText: String? = null,
+    leadingIcon: ImageVector? = null,
 ) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.surface,
     ) {
         Column(
@@ -36,22 +33,24 @@ fun LanguageTextField(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            var filledText by remember {
-                mutableStateOf("")
-            }
             OutlinedTextField(
-                value = filledText, onValueChange = { filledText = it },
+                value = onBoardingViewModel.languageText.value ?: "",
+                onValueChange = onBoardingViewModel::onLanguageTextChanged,
                 label = {
-                    Text(text = "Enter language")
+                    Text(text = label)
                 },
                 leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_flag),
-                        contentDescription = "Language"
-                    )
+                    if (leadingIcon != null) {
+                        Icon(
+                            imageVector = leadingIcon,
+                            contentDescription = null
+                        )
+                    }
                 },
                 supportingText = {
-                    Text(text = "Please enter a valid language")
+                    if (supportingText != null) {
+                        Text(text = supportingText)
+                    }
                 },
                 isError = false,
                 singleLine = true
@@ -63,10 +62,10 @@ fun LanguageTextField(
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun PreviewLightLanguageTextField() {
-
-    LanguageTextField(
-        value = "",
-        onValueChange = { /*TODO*/ }
+fun PreviewCustomOutlinedTextField() {
+    CustomOutlinedTextField(
+        onBoardingViewModel = OnBoardingViewModel(),
+        label = "Enter language",
+        supportingText = "Please enter a valid language"
     )
 }
