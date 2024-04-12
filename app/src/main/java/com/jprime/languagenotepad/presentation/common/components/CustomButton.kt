@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.jprime.languagenotepad.ui.theme.ColorButton
-import com.jprime.languagenotepad.ui.theme.ColorButtonIcon
+import com.jprime.languagenotepad.ui.theme.ColorButton1
+import com.jprime.languagenotepad.ui.theme.ColorButton3
 import com.jprime.languagenotepad.ui.theme.ColorText
 import com.jprime.languagenotepad.ui.theme.LanguageNotepadTheme
 
@@ -34,13 +34,13 @@ fun CustomButton(
         modifier = modifier,
         colors = when (content) {
             is ButtonContent.Text -> ButtonDefaults.buttonColors(
-                containerColor = ColorButton,
+                containerColor = ColorButton1,
                 contentColor = ColorText,
             )
 
             is ButtonContent.Icon -> ButtonDefaults.buttonColors(
-                containerColor = ColorButton,
-                contentColor = ColorButtonIcon,
+                containerColor = ColorButton3,
+                contentColor = ColorButton1,
             )
         },
         contentPadding = PaddingValues(16.dp)

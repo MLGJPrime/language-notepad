@@ -24,6 +24,9 @@ fun CustomOutlinedTextField(
     supportingText: String? = null,
     leadingIcon: ImageVector? = null,
 ) {
+    val isError =
+        onBoardingViewModel.isButtonPressed.value == true && onBoardingViewModel.languageText.value.isNullOrEmpty()
+
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.surface,
@@ -48,11 +51,11 @@ fun CustomOutlinedTextField(
                     }
                 },
                 supportingText = {
-                    if (supportingText != null) {
-                        Text(text = supportingText)
+                    if (isError && supportingText != null) {
+                        Text(text = supportingText, color = MaterialTheme.colorScheme.error)
                     }
                 },
-                isError = false,
+                isError = isError,
                 singleLine = true
             )
         }

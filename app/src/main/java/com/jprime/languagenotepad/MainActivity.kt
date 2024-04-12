@@ -14,14 +14,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.jprime.languagenotepad.presentation.onboarding.OnBoardingViewModel
-import com.jprime.languagenotepad.presentation.onboarding.OnboardingScreen
+import com.jprime.languagenotepad.presentation.navgraph.NavGraph
 import com.jprime.languagenotepad.ui.theme.LanguageNotepadTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel by viewModels<OnBoardingViewModel>()
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +28,13 @@ class MainActivity : ComponentActivity() {
 
         installSplashScreen().apply {
             setKeepOnScreenCondition {
-                viewModel.selectedLanguage.value == null
+                viewModel.splashCondition
             }
         }
 
         setContent {
             LanguageNotepadTheme {
+
                 val isSystemInDarkMode = isSystemInDarkTheme()
                 val systemController = rememberSystemUiController()
 
@@ -46,11 +46,8 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    if (viewModel.selectedLanguage.value == null) {
-                        OnboardingScreen(viewModel)
-                    } else {
-                        // Skip onboarding and load main app UI
-                    }
+                    val startDestination = viewModel.startDestination
+                    NavGraph(startDestination = startDestination)
                 }
             }
         }

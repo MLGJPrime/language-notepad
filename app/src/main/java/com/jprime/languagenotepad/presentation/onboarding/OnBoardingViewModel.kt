@@ -10,6 +10,7 @@ import javax.inject.Inject
 class OnBoardingViewModel @Inject constructor() : ViewModel() {
     val selectedLanguage: MutableLiveData<Language> = MutableLiveData()
     val languageText: MutableLiveData<String> = MutableLiveData()
+    val isButtonPressed: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun selectLanguage(language: Language) {
         selectedLanguage.value = language
@@ -17,5 +18,9 @@ class OnBoardingViewModel @Inject constructor() : ViewModel() {
 
     fun onLanguageTextChanged(newText: String) {
         languageText.value = newText
+    }
+
+    fun onButtonPressed() {
+        isButtonPressed.value = true
     }
 }

@@ -26,9 +26,9 @@ val ColorDivider = Color(0xFF30363d)
 val LightColorDivider = Color(0xFFBDBDBD)
 
 // Button Colors
-val ColorButton = Color(0xFF36444A)
-val ColorButtonPressed = Color(0xFF596E78)
-val ColorButtonIcon = Color(0xFFF16235)
+val ColorButton1 = Color(0xFFF16235)
+val ColorButton2 = Color(0xFF596E78)
+val ColorButton3 = Color(0xFF36444A)
 val LightColorButton = Color(0xFFE0E0E0)
 val LightColorButtonPressed = Color(0xFFAEAEAE)
 
