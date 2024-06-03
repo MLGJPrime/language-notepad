@@ -50,6 +50,7 @@ fun OnboardingScreen(languageViewModel: OnBoardingViewModel = viewModel()) {
                     } else {
                         languageViewModel.selectLanguage(
                             Language(
+                                id = 0,
                                 languageViewModel.languageText.value ?: ""
                             )
                         )
